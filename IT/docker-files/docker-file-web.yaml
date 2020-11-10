@@ -1,0 +1,9 @@
+FROM php:7.4-apache
+COPY ./templates/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+RUN pecl install xdebug \
+    && apt-get update \
+    && apt-get install vim -y \
+    && apt-get install iputils-ping -y \
+    && apt-get install net-tools \
+    && apt-get install telnet -y
+COPY ./templates/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini

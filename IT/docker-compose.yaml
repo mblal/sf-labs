@@ -1,0 +1,15 @@
+version: "3"
+services:
+  external-web:
+    build:
+      context: .
+      dockerfile: docker-files/docker-file-web.yaml
+    #ports:
+    #  - "8080:80"
+    working_dir: /var/www
+    volumes:
+    - ../:/var/www/
+    environment:
+      PHP_IDE_CONFIG: serverName=it_external-web_1
+      #XDEBUG_CONFIG: remote_host=host.docker.internal
+    network_mode: "host"
